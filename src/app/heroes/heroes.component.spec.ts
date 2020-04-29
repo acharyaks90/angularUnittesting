@@ -24,4 +24,13 @@ describe('HeroesComponent',()=>{
             expect(component.heroes.length).toBe(2)
         })
     })
+
+    describe('delete',()=>{
+        it('should remove the indicated hero from the heroes list',()=>{
+            heroMockService.deleteHero.add.returnValue(of(true))
+            component.heroes = HEROES;
+            component.delete(HEROES[2]);
+            expect(heroMockService.deleteHero).toHaveBeenCalled()
+        })
+    })
 })
